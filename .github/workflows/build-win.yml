@@ -1,4 +1,4 @@
-name: Build EXE with PyInstaller (Windows)
+name: Build GUI EXE with PyInstaller (Windows)
 
 on:
   push:
@@ -24,10 +24,10 @@ jobs:
           if exist requirements.txt pip install -r requirements.txt
           pip install pyinstaller
 
-      - name: Build onefile EXE
+      - name: Build onefile (GUI)
         shell: cmd
         run: |
-          pyinstaller --noconfirm --onefile --name MyApp .\main.py
+          pyinstaller --noconfirm --onefile --windowed --name MyApp .\main.py
 
       - name: Upload artifact (EXE)
         uses: actions/upload-artifact@v4
